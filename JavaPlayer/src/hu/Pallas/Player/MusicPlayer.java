@@ -2,6 +2,8 @@ package hu.Pallas.Player;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +42,7 @@ public class MusicPlayer implements ActionListener {
 		//Ablak háttérszínének megadása
 		frame.getContentPane().setBackground(Color.ORANGE);
 		//Ablak mérete px
-		frame.setSize(500,200);
+		frame.setSize(500,220);
 		//Ablak mindig a képernyő közepére kerüljön
 		frame.setLocationRelativeTo(null);
 		//Ablak látszódjon vagy ne booleannal beállítva
@@ -52,19 +54,19 @@ public class MusicPlayer implements ActionListener {
 		zeneValaszt.setBounds(160, 30, 200, 30);
 		frame.add(zeneValaszt);
 		
-		szamNeve.setBounds(160, 90, 180, 30);
+		szamNeve.setBounds(160, 60 , 180, 30);
 		frame.add(szamNeve);
 		
-		lejatszasGomb.setBounds(30, 100, 100, 30);
+		lejatszasGomb.setBounds(40, 120, 100, 30);
 		frame.add(lejatszasGomb);
 		
-		pauseGomb.setBounds(130, 100, 100, 30);
+		pauseGomb.setBounds(140, 120, 100, 30);
 		frame.add(pauseGomb);
 		
-		ujrainditGomb.setBounds(230, 100, 100, 30);
+		ujrainditGomb.setBounds(240, 120, 100, 30);
 		frame.add(ujrainditGomb);
 		
-		stopGomb.setBounds(330, 100, 100, 30);
+		stopGomb.setBounds(340, 120, 100, 30);
 		frame.add(stopGomb);
 	}
 	
@@ -94,7 +96,7 @@ public class MusicPlayer implements ActionListener {
 			szamNeve.setText("Lejátszás: "+fileNev);
 		}
 		if(e.getSource() == stopGomb) {
-			playThread.stop();
+			playThread.interrupt();;
 			szamNeve.setText("");
 		}
 		
